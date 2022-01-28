@@ -50,7 +50,10 @@ const Home: NextPage = () => {
       </main>
       <footer>
         <p>
-          Made with love by <a href="">Making Stuffs</a>
+          Made with by
+          <a href="https://makingstuffs.co.uk" title="My website">
+            Making Stuffs
+          </a>
         </p>
       </footer>
     </StyledDoc>
