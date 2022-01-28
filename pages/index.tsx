@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { possibleCountries } from "data";
-import { CombinedPageData } from "types";
+import { PossibleCountriesData } from "types";
 import styled from "styled-components";
 
 const Home: NextPage = () => {
@@ -24,9 +24,9 @@ const Home: NextPage = () => {
             without an extended quarantine period.
           </p>
           <StyledCountryList>
-            {possibleCountries.map((country: CombinedPageData) => {
+            {possibleCountries.map((country: PossibleCountriesData) => {
               return (
-                <StyledCountryListItem>
+                <StyledCountryListItem key={country.country}>
                   <div>
                     <p>{country.country.replace(/-/g, " ")}</p>
                     <StyledCountryListLinks>
