@@ -155,7 +155,6 @@ const StyledCountryInfo = styled.div`
     font-size: 0.75rem;
     text-align: left;
     opacity: 0.7;
-    font-family: "open sans";
     text-align: center;
   }
 `;
