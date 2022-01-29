@@ -63,7 +63,7 @@ const Home: NextPage = () => {
         />
         <meta
           property="og:image"
-          content="https://quarantinefree.info/assets/images/share-card.jpeg"
+          content="https://quarantinefree.info/assets/images/social/share-card.jpeg"
         />
         <meta property="og:url" content="https://quarantinefree.info" />
         <meta
