@@ -1,11 +1,13 @@
 import { createGlobalStyle } from "styled-components";
-export const GlobalStyles = createGlobalStyle`html,
+export const GlobalStyles = createGlobalStyle`
+
+html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    letter-spacing: 1px;
+  font-family: poppins;
+  letter-spacing: 1.25px;
+  line-height: 1.5;
 }
 
 a {
