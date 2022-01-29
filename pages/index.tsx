@@ -48,7 +48,7 @@ const Home: NextPage = () => {
         />
         <meta
           name="twitter:image"
-          content="https://quarantinefree.info/assets/images/share-card.jpeg"
+          content="https://quarantinefree.info/assets/images/social/share-card.jpeg"
         />
         <meta name="twitter:site" content="@makingstuffs" />
         <meta name="twitter:creator" content="@makingstuffs" />
