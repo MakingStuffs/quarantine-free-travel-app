@@ -12,7 +12,7 @@ const ItemMeta: React.FC<{ data: PossibleCountriesData }> = ({ data }) => {
         This page{" "}
         {data.restrictionData.mentionsQuarantine
           ? "mentions the word 'quarantine'"
-          : "does't mention the word 'quarantine'"}{" "}
+          : "doesn't mention the word 'quarantine'"}{" "}
       </p>
       {data.restrictionData.withConditions && (
         <p>Quarantine measures may be conditional for this country</p>
@@ -32,13 +32,52 @@ const Home: NextPage = () => {
     <StyledDoc>
       <Head>
         <title>Quarantine Free Travel Destinations</title>
+        <meta
+          name="description"
+          content="Check up the latest countries which might be allowing tourists to visit without an extended quarantine or isolation period."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content="Quarantine Free Travel Destinations"
+        />
+        <meta
+          name="twitter:description"
+          content="Check up the latest countries which might be allowing tourists to visit without an extended quarantine or isolation period."
+        />
+        <meta
+          name="twitter:image"
+          content="https://quarantinefree.info/assets/images/share-card.jpeg"
+        />
+        <meta name="twitter:site" content="@makingstuffs" />
+        <meta name="twitter:creator" content="@makingstuffs" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Quarantine Free Travel Destinations"
+        />
+        <meta
+          property="og:description"
+          content="Check up the latest countries which might be allowing tourists to visit without an extended quarantine or isolation period."
+        />
+        <meta
+          property="og:image"
+          content="https://quarantinefree.info/assets/images/share-card.jpeg"
+        />
+        <meta property="og:url" content="https://quarantinefree.info" />
+        <meta
+          property="og:site_name"
+          content="Quarantine Free Travel Destinations"
+        />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledMain>
         <StyledHeader>
           <h1>Quarantine Free Travel Destinations</h1>
           <p>
             The following countries <span>might</span> be allowing tourists to
-            enter without the need to an extended quarantine period.
+            enter without the need to complete an extended quarantine period.
           </p>
         </StyledHeader>
         <section>
