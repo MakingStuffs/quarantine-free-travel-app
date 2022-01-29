@@ -6,6 +6,7 @@ import { runMiddleware } from "utils";
 
 const cors = Cors({
   methods: ["GET", "HEAD"],
+  origin: "*",
 });
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
