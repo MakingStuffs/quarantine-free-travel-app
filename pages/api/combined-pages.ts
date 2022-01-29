@@ -5,7 +5,7 @@ import Cors from "cors";
 import { runMiddleware } from "utils";
 
 const cors = Cors({
-  methods: ["GET", "HEAD"],
+  methods: ["GET", "OPTION"],
   origin: "*",
 });
 
