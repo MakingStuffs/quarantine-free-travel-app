@@ -1,8 +1,17 @@
 import { combinedPages } from "data";
 import { NextApiRequest, NextApiResponse } from "next";
 import { SimpleApiResponse } from "types";
+import Cors from "cors";
+import { runMiddleware } from "utils";
 
-export default (req: NextApiRequest, res: NextApiResponse<any>) => {
+const cors = Cors({
+  methods: ["GET", "HEAD"],
+});
+
+export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
+  // First run our middleware to allow cors
+  await runMiddleware(req, res, cors);
+  // Now we can return ur response
   if (!!combinedPages) {
     const response: SimpleApiResponse = {
       data: combinedPages,
