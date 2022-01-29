@@ -1,0 +1,13 @@
+name: Daily Updater
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  jobs:
+    cron:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Daily Updater
+          run: |
+            curl --request POST \
+            --url 'https://quarantine-free-travel-app.vercel.app/api/update' \
+            -- header 'Authorization: Bearer ${{ secret.ACTION_KEY }}'
