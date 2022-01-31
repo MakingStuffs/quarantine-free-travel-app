@@ -1,22 +1,29 @@
-import { countryPageUrls } from "data";
 import { NextApiRequest, NextApiResponse } from "next";
-import { SimpleApiResponse } from "types";
+import { CountryInterface } from "types";
 import Cors from "cors";
 import { runMiddleware } from "utils";
+import { getAllCountryPageRecords } from "services";
 
 const cors = Cors({
   methods: ["GET", "OPTION"],
   origin: "*",
 });
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await runMiddleware(req, res, cors);
-  if (!!countryPageUrls) {
-    const response: SimpleApiResponse = {
-      data: countryPageUrls,
-      message: `${countryPageUrls.length} countries found.`,
-      length: countryPageUrls.length,
-    };
-    return res.status(200).json(response);
+
+  try {
+    const records: CountryInterface[] =
+      (await getAllCountryPageRecords()) as unknown[] as CountryInterface[];
+    // return it
+    res.status(200).json({
+      data: records,
+      message: `${records.length} country pages found.`,
+      length: records.length,
+    });
+  } catch (e) {
+    console.log(e);
   }
 };
+
+export default handler;

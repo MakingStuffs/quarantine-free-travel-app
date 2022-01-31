@@ -1,15 +1,9 @@
 import { chromium } from "playwright";
-import countryUrls from "../data/countryPageUrls.json";
-import fs from "fs";
-import path from "path";
 
-const COUNTRY_PAGE_FILE = path.resolve(
-  __dirname,
-  "../data/countryPageUrls.json"
-);
 const BASE_URL = "https://www.gov.uk/foreign-travel-advice";
 
-export const getCountryPages = async () => {
+// Service to scrape the BASE_URL and compile a list of URLS
+export const getCountryPages = async (): Promise<string[]> => {
   console.log(`Getting all country info pages from ${BASE_URL}`);
   // Launch chrome
   const browser = await chromium.launch();
@@ -34,22 +28,10 @@ export const getCountryPages = async () => {
       ) as HTMLAnchorElement[]
     ).map((l: HTMLAnchorElement) => l.href)
   );
-  // temp urls
-  let temp = [...countryUrls];
-  console.log("Checking if new links are available");
-  // Check if the links we just got include any which are not in the urls already
-  countryPageLinks.some((link) => {
-    if (!temp.includes(link)) {
-      temp.push(link);
-    }
-  });
-  // Check if we should re save country urls
-  if (JSON.stringify(temp) !== JSON.stringify(countryUrls)) {
-    console.log("Updating JSON file");
-    fs.writeFileSync(COUNTRY_PAGE_FILE, JSON.stringify(temp, null, 2));
-  }
-  // Close that page
+  // Close the page
   await page.close();
   // Close the browser
   await browser.close();
+  // Return the links
+  return countryPageLinks;
 };

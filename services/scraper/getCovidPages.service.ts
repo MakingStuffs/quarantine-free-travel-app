@@ -1,21 +1,19 @@
 import { chromium } from "playwright";
-import coronaUrls from "../data/countryPageUrls.json";
-import fs from "fs";
-import path from "path";
-const CORONA_PAGE_FILE = path.resolve(__dirname, "../data/covidPageUrls.json");
 
-export const getCoronaPages = async () => {
-  console.log(`Getting COVID 19 info page for ${coronaUrls.length} countries`);
+export const getCovidPages = async (
+  countryPages: string[]
+): Promise<string[]> => {
+  console.log(
+    `Getting COVID 19 info page for ${countryPages.length} countries`
+  );
   // Launch chrome
   const browser = await chromium.launch();
-  // Country corona page links
-  let coronaPageLinks = [...coronaUrls];
+  // Init an output array
+  const output: string[] = [];
   // Iterate country links
-  for (let i = 0; i < coronaPageLinks.length; i++) {
+  for (let i = 0; i < countryPages.length; i++) {
     // Get this link
-    const link = coronaPageLinks[i];
-    // Ensure we dont process needlessly
-    if (coronaPageLinks.includes(link)) continue;
+    const link = countryPages[i];
     // Get a new page
     let countryPage = await browser.newPage();
     // Visit this link
@@ -30,7 +28,7 @@ export const getCoronaPages = async () => {
       [countryPage] = await Promise.all([countryPage.waitForEvent("load")]);
     }
     // Get the corona link
-    const coronaLink = await countryPage.evaluate(
+    const covidLink = await countryPage.evaluate(
       () =>
         (
           document.querySelector(
@@ -39,22 +37,16 @@ export const getCoronaPages = async () => {
         )?.href
     );
     // Check we have a link
-    if (!!coronaLink) {
+    if (!!covidLink) {
       // Push it to the array
-      coronaPageLinks.push(coronaLink);
+      output.push(covidLink);
     }
     // close this page
     await countryPage.close();
   }
   console.log("Checking for new data");
-  // Check if there are any new corona page links
-  if (JSON.stringify(coronaPageLinks) !== JSON.stringify(coronaUrls)) {
-    console.log("Writing updated list");
-    fs.writeFileSync(
-      CORONA_PAGE_FILE,
-      JSON.stringify(coronaPageLinks, null, 2)
-    );
-  }
   // Close the browser
   await browser.close();
+  // Return our array
+  return output;
 };
