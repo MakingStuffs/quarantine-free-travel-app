@@ -1,25 +1,28 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { possibleCountries } from "data";
-import { PossibleCountriesData } from "types";
+import { CountryInterface, PossibleCountriesData } from "types";
 import styled from "styled-components";
-
-const ItemMeta: React.FC<{ data: PossibleCountriesData }> = ({ data }) => {
+import { useEffect, useState } from "react";
+const ItemMeta: React.FC<{ data: CountryInterface }> = ({ data }) => {
+  const quarantineWithConditions = data.restrictionData?.mentions.find(
+    (m) => typeof m === "object" && m.type === "QUARANTINE"
+  );
   return (
     <StyledCountryInfo>
       <p>
         This page{" "}
-        {data.restrictionData.mentionsQuarantine
+        {quarantineWithConditions ||
+        data.restrictionData?.mentions.includes("QUARANTINE")
           ? "mentions the word 'quarantine'"
           : "doesn't mention the word 'quarantine'"}{" "}
       </p>
-      {data.restrictionData.withConditions && (
+      {quarantineWithConditions && (
         <p>Quarantine measures may be conditional for this country</p>
       )}
       <p>
         This page{" "}
-        {data.restrictionData.closedBorders
+        {data.restrictionData?.mentions.includes("CLOSED_BORDER")
           ? "mentions having closed borders"
           : "doesn't mention having closed borders"}
       </p>
@@ -28,6 +31,20 @@ const ItemMeta: React.FC<{ data: PossibleCountriesData }> = ({ data }) => {
 };
 
 const Home: NextPage = () => {
+  const [possibleCountries, setPossibleCountries] =
+    useState<CountryInterface[]>();
+  useEffect(() => {
+    (async () => {
+      try {
+        const request = await fetch("/api/possible-countries");
+        const result = await request.json();
+        console.log(result);
+        setPossibleCountries(result.data);
+      } catch (e) {
+        console.warn(e);
+      }
+    })();
+  }, []);
   return (
     <StyledDoc>
       <Head>
@@ -82,28 +99,34 @@ const Home: NextPage = () => {
         </StyledHeader>
         <section>
           <StyledCountryList>
-            {possibleCountries.map((country: PossibleCountriesData) => {
-              return (
-                <StyledCountryListItem key={country.country}>
-                  <div>
-                    <h2>{country.country.replace(/-/g, " ")}</h2>
-                    <ItemMeta data={country} />
-                    <StyledCountryListLinks>
-                      <Link href={country.countryPage}>
-                        <StyledCountryListLink href={country.countryPage}>
-                          Travel Advice Page
-                        </StyledCountryListLink>
-                      </Link>
-                      <Link href={country.coronaPage}>
-                        <StyledCountryListLink href={country.coronaPage}>
-                          COVID Information Page
-                        </StyledCountryListLink>
-                      </Link>
-                    </StyledCountryListLinks>
-                  </div>
-                </StyledCountryListItem>
-              );
-            })}
+            {possibleCountries
+              ? possibleCountries.map((country: CountryInterface) => {
+                  return (
+                    <StyledCountryListItem key={country.name}>
+                      <div>
+                        <h2>{country.name.replace(/-/g, " ")}</h2>
+                        <ItemMeta data={country} />
+                        <StyledCountryListLinks>
+                          <Link href={country.urls.countryPage} passHref={true}>
+                            <StyledCountryListLink
+                              href={country.urls.countryPage}
+                            >
+                              Travel Advice Page
+                            </StyledCountryListLink>
+                          </Link>
+                          <Link href={country.urls.covidPage} passHref={true}>
+                            <StyledCountryListLink
+                              href={country.urls.covidPage}
+                            >
+                              COVID Information Page
+                            </StyledCountryListLink>
+                          </Link>
+                        </StyledCountryListLinks>
+                      </div>
+                    </StyledCountryListItem>
+                  );
+                })
+              : null}
           </StyledCountryList>
         </section>
       </StyledMain>
@@ -140,6 +163,7 @@ const StyledDoc = styled.div`
 
 const StyledMain = styled.main`
   padding: 1rem;
+  min-height: 150vh;
 `;
 
 const StyledCountryList = styled.ul`
