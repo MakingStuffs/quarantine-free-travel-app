@@ -1,24 +1,29 @@
-import { combinedPages } from "data";
 import { NextApiRequest, NextApiResponse } from "next";
-import { SimpleApiResponse } from "types";
+import { CountryInterface } from "types";
 import Cors from "cors";
 import { runMiddleware } from "utils";
+import { getAllCombinedPageRecords } from "services";
 
 const cors = Cors({
   methods: ["GET", "OPTION"],
   origin: "*",
 });
 
-export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
-  // First run our middleware to allow cors
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await runMiddleware(req, res, cors);
-  // Now we can return ur response
-  if (!!combinedPages) {
-    const response: SimpleApiResponse = {
-      data: combinedPages,
-      message: `${combinedPages.length} countries with COVID info pages found.`,
-      length: combinedPages.length,
-    };
-    return res.status(200).json(response);
+
+  try {
+    const records: CountryInterface[] =
+      (await getAllCombinedPageRecords()) as unknown[] as CountryInterface[];
+    // return it
+    res.status(200).json({
+      data: records,
+      message: `${records.length} COVID 19 and country pages found.`,
+      length: records.length,
+    });
+  } catch (e) {
+    console.log(e);
   }
 };
+
+export default handler;
