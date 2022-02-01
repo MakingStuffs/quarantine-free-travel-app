@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { CountryInterface, SimpleApiResponse } from "types";
+import { CountryInterface } from "types";
 import Cors from "cors";
 import { runMiddleware } from "utils";
 import { getAllRecords } from "services";
+import { constants } from "config";
 
 // Init our cors middleware
 const cors = Cors({
@@ -12,11 +13,16 @@ const cors = Cors({
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    console.log(constants.MONGO_DB);
+    console.log("hey");
     // Run our middleware
     await runMiddleware(req, res, cors);
+    console.log("yo");
     // Get our DB instance
     const records: CountryInterface[] =
       (await getAllRecords()) as unknown[] as CountryInterface[];
+    console.log(records);
+
     const possible = records?.filter((record: CountryInterface) => {
       if (record.restrictionData?.mentions.length === 0) {
         return true;
