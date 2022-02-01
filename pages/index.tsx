@@ -38,7 +38,6 @@ const Home: NextPage = () => {
       try {
         const request = await fetch("/api/possible-countries");
         const result = await request.json();
-        console.log(result);
         setPossibleCountries(result.data);
       } catch (e) {
         console.warn(e);
