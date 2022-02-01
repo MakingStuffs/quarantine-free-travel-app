@@ -44,6 +44,8 @@ const Home: NextPage = () => {
       }
     })();
   }, []);
+
+  console.log(process.env.TESTING);
   return (
     <StyledDoc>
       <Head>
