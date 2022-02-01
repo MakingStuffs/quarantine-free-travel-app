@@ -30,7 +30,7 @@ const ItemMeta: React.FC<{ data: CountryInterface }> = ({ data }) => {
   );
 };
 
-const Home: NextPage = () => {
+const CountryList: React.FC = () => {
   const [possibleCountries, setPossibleCountries] =
     useState<CountryInterface[]>();
   useEffect(() => {
@@ -44,7 +44,41 @@ const Home: NextPage = () => {
       }
     })();
   }, []);
+  return (
+    <section>
+      <StyledCountryList>
+        {possibleCountries ? (
+          possibleCountries.map((country: CountryInterface) => {
+            return (
+              <StyledCountryListItem key={country.name}>
+                <div>
+                  <h2>{country.name.replace(/-/g, " ")}</h2>
+                  <ItemMeta data={country} />
+                  <StyledCountryListLinks>
+                    <Link href={country.urls.countryPage} passHref={true}>
+                      <StyledCountryListLink href={country.urls.countryPage}>
+                        Travel Advice Page
+                      </StyledCountryListLink>
+                    </Link>
+                    <Link href={country.urls.covidPage} passHref={true}>
+                      <StyledCountryListLink href={country.urls.covidPage}>
+                        COVID Information Page
+                      </StyledCountryListLink>
+                    </Link>
+                  </StyledCountryListLinks>
+                </div>
+              </StyledCountryListItem>
+            );
+          })
+        ) : (
+          <Loader />
+        )}
+      </StyledCountryList>
+    </section>
+  );
+};
 
+const Home: NextPage = () => {
   return (
     <StyledDoc>
       <Head>
@@ -97,38 +131,7 @@ const Home: NextPage = () => {
             enter without the need to complete an extended quarantine period.
           </p>
         </StyledHeader>
-        <section>
-          <StyledCountryList>
-            {possibleCountries
-              ? possibleCountries.map((country: CountryInterface) => {
-                  return (
-                    <StyledCountryListItem key={country.name}>
-                      <div>
-                        <h2>{country.name.replace(/-/g, " ")}</h2>
-                        <ItemMeta data={country} />
-                        <StyledCountryListLinks>
-                          <Link href={country.urls.countryPage} passHref={true}>
-                            <StyledCountryListLink
-                              href={country.urls.countryPage}
-                            >
-                              Travel Advice Page
-                            </StyledCountryListLink>
-                          </Link>
-                          <Link href={country.urls.covidPage} passHref={true}>
-                            <StyledCountryListLink
-                              href={country.urls.covidPage}
-                            >
-                              COVID Information Page
-                            </StyledCountryListLink>
-                          </Link>
-                        </StyledCountryListLinks>
-                      </div>
-                    </StyledCountryListItem>
-                  );
-                })
-              : null}
-          </StyledCountryList>
-        </section>
+        <CountryList />
       </StyledMain>
       <StyledFooter>
         <p>
@@ -173,6 +176,8 @@ const StyledCountryList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
+  height: 100%;
 `;
 
 const StyledCountryListItem = styled.li`
@@ -253,6 +258,26 @@ const StyledFooter = styled.footer`
   padding: 4rem 0;
   background-color: var(--accent-3);
   margin-top: 4rem;
+`;
+
+const Loader = styled.span`
+  position:absolute;
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  width: 70px;
+  height: 70px;
+  border: 4px solid var(--primary);
+  border-bottom-color: var(--accent-2);
+  animation rotate 2s linear infinite;
+  border-radius: 50%;
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    } to {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 export default Home;
