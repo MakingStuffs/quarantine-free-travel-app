@@ -16,6 +16,7 @@ let cachedClient: null | MongoClient = null;
 let cachedDb: null | Db = null;
 
 const connectToMongo = async (): Promise<{ db: Db; client: MongoClient }> => {
+  console.log(MONGO_DB);
   // If we have cached client and DB just return them
   if (cachedClient && cachedDb) {
     return {
