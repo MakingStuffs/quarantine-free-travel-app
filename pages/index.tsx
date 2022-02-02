@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { CountryInterface, PossibleCountriesData } from "types";
+import { CountryInterface } from "types";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 const ItemMeta: React.FC<{ data: CountryInterface }> = ({ data }) => {
