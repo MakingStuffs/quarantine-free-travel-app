@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch",
-    "postinstall": "yarn add playwright"
+    "test": "jest --watch"
   },
   "dependencies": {
     "cors": "^2.8.5",
