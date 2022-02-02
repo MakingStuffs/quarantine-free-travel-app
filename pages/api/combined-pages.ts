@@ -3,7 +3,6 @@ import { CountryInterface, SimpleApiResponse } from "types";
 import Cors from "cors";
 import { runMiddleware } from "utils";
 import { getAllCombinedPageRecords } from "services";
-import { ErrorInfo } from "react";
 
 const cors = Cors({
   methods: ["GET", "OPTION"],
