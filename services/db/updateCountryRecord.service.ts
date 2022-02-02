@@ -16,7 +16,12 @@ const updateCountryRecord = async (
   if (record) {
     const updatedRecord = await collection.findOneAndUpdate(
       { name: country.name },
-      country
+      {
+        $set: {
+          restrictionData: country.restrictionData,
+          updated: country.updated,
+        },
+      }
     );
     return updatedRecord as unknown as CountryInterface;
   } else {
