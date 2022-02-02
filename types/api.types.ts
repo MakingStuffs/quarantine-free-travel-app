@@ -1,7 +1,7 @@
-import { CombinedPageData } from "./data.types";
+import { CountryInterface } from "./data.types";
 
 export type SimpleApiResponse = {
-  data: string[] | CombinedPageData[];
+  data: string[] | CountryInterface[];
   message: string;
   length: number;
 };
