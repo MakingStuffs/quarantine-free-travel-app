@@ -37,9 +37,15 @@ const getCountryRestrictions = async (countries: CountryInterface[]) => {
           const body = document.body.outerText;
 
           const mentionsQuarantine = /quarantine/gi.test(body);
+          const mentionsIsolation = /self-?(isolate|isolation)/gi.test(body);
 
           const withConditions =
             /quarantine (["'\(]?[a-z-_]*?["'\)]?[ ,]{1}){0,3}depending/gi.test(
+              body
+            );
+
+          const isolationWithConditions =
+            /self-?(isolate|isolation) (["'\(]?[a-z-_]*?["'\)]?[ ,]{1}){0,3}depending/gi.test(
               body
             );
           const closedBorders =
@@ -56,12 +62,24 @@ const getCountryRestrictions = async (countries: CountryInterface[]) => {
               type: "QUARANTINE" as RestrictionMentionType,
               conditions: true,
             });
-            return mentions;
           }
 
-          return mentionsQuarantine
-            ? [...mentions, "QUARANTINE" as RestrictionMentionType]
-            : mentions;
+          if (isolationWithConditions) {
+            mentions.push({
+              type: "ISOLATION" as RestrictionMentionType,
+              conditions: true,
+            });
+          }
+
+          if (!isolationWithConditions && mentionsIsolation) {
+            mentions.push("ISOLATION");
+          }
+
+          if (!withConditions && mentionsQuarantine) {
+            mentions.push("QUARANTINE");
+          }
+
+          return mentions;
         }
       );
     // Close the page
