@@ -8,6 +8,9 @@ const ItemMeta: React.FC<{ data: CountryInterface }> = ({ data }) => {
   const quarantineWithConditions = data.restrictionData?.mentions.find(
     (m) => typeof m === "object" && m.type === "QUARANTINE"
   );
+  const isolationWithConditions = data.restrictionData?.mentions.find(
+    (m) => typeof m === "object" && m.type === "ISOLATION"
+  );
   return (
     <StyledCountryInfo>
       <p>
@@ -20,6 +23,17 @@ const ItemMeta: React.FC<{ data: CountryInterface }> = ({ data }) => {
       {quarantineWithConditions && (
         <p>Quarantine measures may be conditional for this country</p>
       )}
+      <p>
+        This page{" "}
+        {isolationWithConditions ||
+        data.restrictionData?.mentions.includes("ISOLATION")
+          ? "mentions the word 'isolation'"
+          : "doesn't mention the word 'isolation'"}{" "}
+      </p>
+      {isolationWithConditions && (
+        <p>Isolation measures may be conditional for this country</p>
+      )}
+
       <p>
         This page{" "}
         {data.restrictionData?.mentions.includes("CLOSED_BORDER")
@@ -44,11 +58,23 @@ const CountryList: React.FC = () => {
       }
     })();
   }, []);
+  const dateOptions: any = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const today = new Date().toLocaleDateString("en-GB", dateOptions);
+
   return (
     <section>
       <StyledCountryList>
         {possibleCountries ? (
           possibleCountries.map((country: CountryInterface) => {
+            const date = new Date(country.updated as number).toLocaleDateString(
+              "en-GB",
+              dateOptions
+            );
             return (
               <StyledCountryListItem key={country.name}>
                 <div>
@@ -67,6 +93,7 @@ const CountryList: React.FC = () => {
                     </Link>
                   </StyledCountryListLinks>
                 </div>
+                <span>Updated: {date === today ? "Today" : date}</span>
               </StyledCountryListItem>
             );
           })
@@ -214,6 +241,12 @@ const StyledCountryListItem = styled.li`
       transform: translateX(-50%);
     }
   }
+
+  > span {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-top: 1rem;
+  }
 `;
 const StyledCountryInfo = styled.div`
   margin-bottom: 1rem;
@@ -240,13 +273,6 @@ const StyledCountryListLink = styled.a`
   background: var(--primary);
   color: white;
   transition: 0.3s ease;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-  &:last-of-type {
-    margin-right: 0;
-  }
 
   &:hover {
     background: var(--primary-dark);
