@@ -24,6 +24,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return false;
       } else if (record.restrictionData?.mentions.includes("QUARANTINE")) {
         return false;
+      } else if (record.restrictionData?.mentions.includes("ISOLATION")) {
+        return false;
       } else {
         return true;
       }
