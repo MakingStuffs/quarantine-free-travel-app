@@ -43,6 +43,13 @@ const countriesSchema = {
                 bsonType: "bool",
                 description: "'conditions' is a required boolean",
               },
+              matches: {
+                bsonType: "array",
+                items: {
+                  bsonType: "string",
+                  description: "'matches' is an array of strings",
+                },
+              },
             },
           },
         },
