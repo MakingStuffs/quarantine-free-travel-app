@@ -8,6 +8,7 @@ export type RestrictionMentionType =
 export interface RestrictionMention {
   type: RestrictionMentionType;
   conditions: boolean;
+  matches?: string[];
 }
 
 export interface CountryInterface {
