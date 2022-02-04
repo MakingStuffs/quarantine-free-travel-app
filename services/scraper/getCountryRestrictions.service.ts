@@ -36,18 +36,23 @@ const getCountryRestrictions = async (countries: CountryInterface[]) => {
         (): (RestrictionMentionType | RestrictionMention)[] => {
           const body = document.body.outerText;
 
-          const mentionsQuarantine = /quarantine/gi.test(body);
-          const mentionsIsolation = /self-?(isolate|isolation)/gi.test(body);
+          const quarantine = {
+            matches: body.match(
+              /(?:\.|\n)+([\w\d\s'",:\-_’]*quarantine[\w\d\s,":\-_’]*)(?:\.|\n)+/gi
+            ),
+            withConditions: /quarantine[\w\s]{0,10}depending/gim.test(body),
+          };
 
-          const withConditions =
-            /quarantine (["'\(]?[a-z-_]*?["'\)]?[ ,]{1}){0,3}depending/gi.test(
-              body
-            );
+          const isolation = {
+            matches: body.match(
+              /(?:\.|\n)+([\w\d\s'",:\-_’]*self-?isolate|self-?isolation[\w\d\s,":\-_’]*)(?:\.|\n)+/gi
+            ),
+            withConditions:
+              /(?:self-?isolate|self-?isolation)[\w\s]{0,10}depending/gim.test(
+                body
+              ),
+          };
 
-          const isolationWithConditions =
-            /self-?(isolate|isolation) (["'\(]?[a-z-_]*?["'\)]?[ ,]{1}){0,3}depending/gi.test(
-              body
-            );
           const closedBorders =
             /borders are closed( to all)?|closed borders/gi.test(body);
 
@@ -57,26 +62,24 @@ const getCountryRestrictions = async (countries: CountryInterface[]) => {
             mentions.push("CLOSED_BORDER" as RestrictionMentionType);
           }
 
-          if (withConditions) {
+          if (quarantine.matches && quarantine.withConditions) {
             mentions.push({
               type: "QUARANTINE" as RestrictionMentionType,
               conditions: true,
+              matches: quarantine.matches,
             });
+          } else if (quarantine.matches) {
+            mentions.push("QUARANTINE");
           }
 
-          if (isolationWithConditions) {
+          if (isolation.matches && isolation.withConditions) {
             mentions.push({
               type: "ISOLATION" as RestrictionMentionType,
               conditions: true,
+              matches: isolation.matches,
             });
-          }
-
-          if (!isolationWithConditions && mentionsIsolation) {
+          } else if (isolation.matches) {
             mentions.push("ISOLATION");
-          }
-
-          if (!withConditions && mentionsQuarantine) {
-            mentions.push("QUARANTINE");
           }
 
           return mentions;
