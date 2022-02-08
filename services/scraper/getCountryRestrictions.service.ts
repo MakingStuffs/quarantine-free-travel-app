@@ -24,17 +24,16 @@ const getCountryRestrictions = async (
       window: { document },
     } = new JSDOM(domText);
     // Check if there is mention of quarantine without variables
-    const currentMentions: (RestrictionMentionType | RestrictionMention)[] =
-      ((): (RestrictionMentionType | RestrictionMention)[] => {
-        const body = document.body.innerText;
-        // There is no body so just exit as we cant do anything
-        if (!!!body) return [];
-        // Get our condition objects
-        const quarantine = getRestrictionObject(body, "QUARANTINE");
-        const isolation = getRestrictionObject(body, "ISOLATION");
-        const closedBorders = getRestrictionObject(body, "CLOSED_BORDER");
-        return getMentions([quarantine, isolation, closedBorders]);
-      })();
+    const currentMentions: RestrictionMention[] = ((): RestrictionMention[] => {
+      const body = document.body.textContent;
+      // There is no body so just exit as we cant do anything
+      if (!!!body) return [];
+      // Get our condition objects
+      const quarantine = getRestrictionObject(body, "QUARANTINE");
+      const isolation = getRestrictionObject(body, "ISOLATION");
+      const closedBorders = getRestrictionObject(body, "CLOSED_BORDER");
+      return getMentions([quarantine, isolation, closedBorders]);
+    })();
     // add to the array
     output.push({
       ...countries[i],
