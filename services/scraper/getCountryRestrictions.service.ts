@@ -7,7 +7,9 @@ import {
 } from "types";
 import { getMentions, getRestrictionObject } from ".";
 
-const getCountryRestrictions = async (countries: CountryInterface[]) => {
+const getCountryRestrictions = async (
+  countries: CountryInterface[]
+): Promise<CountryInterface[]> => {
   // output
   let output: CountryInterface[] = [];
   // Log
