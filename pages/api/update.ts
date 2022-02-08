@@ -1,9 +1,10 @@
 import { updateAllRecords, getUpdatedList } from "services";
 import { NextApiRequest, NextApiResponse } from "next";
 import { SimpleApiResponse } from "types";
+import { constants } from "config";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { API_SECRET } = process.env;
+  const { API_SECRET } = constants;
   const ACTION_KEY = req?.headers?.authorization?.split(" ")[1];
   if (API_SECRET === ACTION_KEY) {
     try {
