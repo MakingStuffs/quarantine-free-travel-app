@@ -1,4 +1,6 @@
-import { chromium } from "playwright";
+import { JSDOM } from "jsdom";
+import fetch from "node-fetch";
+import { constants } from "config";
 
 export const getCovidPages = async (
   countryPages: string[]
@@ -6,8 +8,6 @@ export const getCovidPages = async (
   console.log(
     `Getting COVID 19 info page for ${countryPages.length} countries`
   );
-  // Launch chrome
-  const browser = await chromium.launch();
   // Init an output array
   const output: string[] = [];
   // Iterate country links
@@ -15,38 +15,27 @@ export const getCovidPages = async (
     // Get this link
     const link = countryPages[i];
     // Get a new page
-    let countryPage = await browser.newPage();
-    // Visit this link
-    await countryPage.goto(link);
-    // Check if the page has loaded
-    const countryHasLoaded = await countryPage.evaluate(
-      () => document.readyState === "complete"
-    );
-    // If we haven't loaded wait for the load event then use that page
-    if (!countryHasLoaded) {
-      // Wait for page load event
-      [countryPage] = await Promise.all([countryPage.waitForEvent("load")]);
-    }
+    const req = await fetch(link);
+    const domText = await req.text();
+    const {
+      window: { document },
+    } = new JSDOM(domText);
     // Get the corona link
-    const covidLink = await countryPage.evaluate(
-      () =>
-        (
-          document.querySelector(
-            '[href*="entry-requirements#entry-rules-in-response-to-coronavirus-covid-19"]'
-          ) as HTMLAnchorElement
-        )?.href
-    );
+    const covidLink = (
+      document.querySelector(
+        '[href*="entry-requirements#entry-rules-in-response-to-coronavirus-covid-19"]'
+      ) as HTMLAnchorElement
+    )?.href;
     // Check we have a link
     if (!!covidLink) {
+      const formattedLink = covidLink.includes(constants.BASE_URL as string)
+        ? covidLink
+        : `${constants.BASE_URL}${covidLink}`;
       // Push it to the array
-      output.push(covidLink);
+      output.push(formattedLink);
     }
-    // close this page
-    await countryPage.close();
   }
   console.log("Checking for new data");
-  // Close the browser
-  await browser.close();
   // Return our array
   return output;
 };
