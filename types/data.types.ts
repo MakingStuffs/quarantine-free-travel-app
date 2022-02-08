@@ -20,6 +20,6 @@ export interface CountryInterface {
     countryPage: string;
   };
   restrictionData?: {
-    mentions: (RestrictionMentionType | RestrictionMention)[];
+    mentions: RestrictionMention[];
   };
 }

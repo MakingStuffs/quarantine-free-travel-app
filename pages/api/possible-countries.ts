@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { CountryInterface } from "types";
+import { CountryInterface, RestrictionMention } from "types";
 import Cors from "cors";
 import { runMiddleware } from "utils";
 import { getAllRecords } from "services";
@@ -20,15 +20,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const possible = records?.filter((record: CountryInterface) => {
       if (record.restrictionData?.mentions.length === 0) {
         return true;
-      } else if (record.restrictionData?.mentions.includes("CLOSED_BORDER")) {
-        return false;
-      } else if (record.restrictionData?.mentions.includes("QUARANTINE")) {
-        return false;
-      } else if (record.restrictionData?.mentions.includes("ISOLATION")) {
-        return false;
-      } else {
-        return true;
       }
+      const shouldShow = record.restrictionData?.mentions.reduce(
+        (output: boolean, mention: RestrictionMention) => {
+          if (
+            mention.conditions === false &&
+            mention.matches &&
+            mention.matches.length > 0
+          ) {
+            output = false;
+          }
+          return output;
+        },
+        true
+      );
+      return shouldShow;
     });
     // return it
     res.status(200).json({
