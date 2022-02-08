@@ -1,3 +1,4 @@
+import { constants } from "config";
 import { connectToMongo } from "lib";
 import { Collection } from "mongodb";
 import { CountryInterface } from "types";
@@ -8,7 +9,7 @@ const updateCountryRecord = async (
   const { db } = await connectToMongo();
   // Get collection
   const collection: Collection = db.collection(
-    process.env.MONGO_COLLECTION as string
+    constants.MONGO_COLLECTION as string
   );
   // update record and get new document
   const record = await collection.findOne({ name: country.name });
