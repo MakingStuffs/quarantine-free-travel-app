@@ -10,5 +10,6 @@ export const GlobalColors = createGlobalStyle`
         --light: #F9F6F6;
         --dark: #041825;
         --grey: #1F1F1F;
+        --warning: 	#ffcc00;
     }
 `;
