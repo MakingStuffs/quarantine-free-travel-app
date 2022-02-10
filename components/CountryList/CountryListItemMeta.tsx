@@ -170,8 +170,9 @@ const StyledCountryListButton = styled.button`
   padding: 0.5rem;
   margin: 0.2rem;
   border-radius: 10px;
-  background: var(--primary);
-  color: white;
+  background: var(--warning);
+  color: var(--dark);
+  font-weight: bold;
   transition: 0.3s ease;
   border: none;
   letter-spacing: 1.25px;
