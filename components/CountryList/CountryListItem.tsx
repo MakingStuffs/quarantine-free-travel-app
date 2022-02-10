@@ -14,13 +14,23 @@ const today = new Date().toLocaleDateString("en-GB", dateOptions);
 const CountryListItem: React.FC<
   { country: CountryInterface } & React.HTMLAttributes<HTMLLIElement>
 > = ({ country, ...rest }) => {
+  // When was this country updated?
   const date = new Date(country.updated as number).toLocaleDateString(
     "en-GB",
     dateOptions
   );
 
+  // Does it have any conditionals?
+  const hasConditions = !!country.restrictionData?.mentions.find(
+    (mention) => mention.conditions
+  );
+
   return (
-    <StyledCountryListItem key={country.name} {...rest}>
+    <StyledCountryListItem
+      key={country.name}
+      hasConditions={hasConditions}
+      {...rest}
+    >
       <div>
         <h2>{country.name.replace(/-/g, " ")}</h2>
         <CountryListItemMeta data={country} />
@@ -30,8 +40,9 @@ const CountryListItem: React.FC<
   );
 };
 
-const StyledCountryListItem = styled.li`
-  margin: 0.5rem;
+const StyledCountryListItem = styled.li<{ hasConditions: boolean }>`
+  ${({ hasConditions }) => `
+margin: 0.5rem;
   background-color: #2a313c;
   padding: 1rem;
   border-radius: 25px;
@@ -56,7 +67,7 @@ const StyledCountryListItem = styled.li`
       position: absolute;
       top: calc(100% + 0.35rem);
       height: 3px;
-      background-color: var(--primary);
+      background-color: ${hasConditions ? "var(--warning)" : "var(--primary)"};
       width: calc(100% + 5px);
       content: "";
       left: 50%;
@@ -70,6 +81,7 @@ const StyledCountryListItem = styled.li`
     opacity: 0.7;
     margin-top: 1rem;
   }
+`}
 `;
 
 export { CountryListItem };
