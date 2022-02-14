@@ -16,6 +16,7 @@ const updateAllRecords = async (newRecords: CountryInterface[]) => {
           { name: toUpdate.name },
           {
             $set: {
+              urls: toUpdate.urls,
               restrictionData: toUpdate.restrictionData,
               updated: toUpdate.updated,
             },

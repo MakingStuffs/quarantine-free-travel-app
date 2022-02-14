@@ -7,7 +7,10 @@ const getAllCovidPageRecords = async () => {
     const collection = db.collection(constants.MONGO_COLLECTION as string);
 
     const records = await collection
-      .find({}, { projection: { name: 1, "urls.covidPage": 1, _id: 0 } })
+      .find(
+        {},
+        { projection: { name: 1, "urls.entryRequirementsPage": 1, _id: 0 } }
+      )
       .toArray();
 
     return records;
