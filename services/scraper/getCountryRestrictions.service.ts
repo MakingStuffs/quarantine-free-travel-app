@@ -18,7 +18,7 @@ const getCountryRestrictions = async (
   for (let i = 0; i < countries.length; i++) {
     console.log(`Checking country ${countries[i].name}`);
     // Go to base url
-    const req = await fetch(countries[i].urls.covidPage);
+    const req = await fetch(countries[i].urls.entryRequirementsPage as string);
     const domText = await req.text();
     const {
       window: { document },

@@ -4,7 +4,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "bangladesh",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/bangladesh/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/bangladesh",
     },
@@ -13,7 +13,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "usa",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/usa/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/usa",
     },
@@ -22,7 +22,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "ukraine",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/ukraine/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/ukraine",
     },
@@ -31,7 +31,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "venezuela",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/venezuela/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/venezuela",
     },
@@ -40,7 +40,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "albania",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/albania/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/albania",
     },
@@ -49,7 +49,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "anguilla",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/anguilla/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/anguilla",
     },
@@ -58,7 +58,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "azerbaijan",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/azerbaijan/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/azerbaijan",
     },
@@ -67,7 +67,7 @@ const FAKE_COUNTRY_ARRAY: CountryInterface[] = [
   {
     name: "bahamas",
     urls: {
-      covidPage:
+      entryRequirementsPage:
         "https://www.gov.uk/foreign-travel-advice/bahamas/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
       countryPage: "https://www.gov.uk/foreign-travel-advice/bahamas",
     },

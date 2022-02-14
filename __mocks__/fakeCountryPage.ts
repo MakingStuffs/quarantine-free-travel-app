@@ -1089,14 +1089,47 @@ const FAKE_COUNTRY_PAGE: string = `<!DOCTYPE html>
 </html>`;
 
 const FAKE_COUNTRY_PAGES = [
-  "https://www.gov.uk/foreign-travel-advice/antigua-and-barbuda",
-  "https://www.gov.uk/foreign-travel-advice/argentina",
-  "https://www.gov.uk/foreign-travel-advice/australia",
-  "https://www.gov.uk/foreign-travel-advice/austria",
-  "https://www.gov.uk/foreign-travel-advice/bahrain",
-  "https://www.gov.uk/foreign-travel-advice/belize",
-  "https://www.gov.uk/foreign-travel-advice/bonaire-st-eustatius-saba",
-  "https://www.gov.uk/foreign-travel-advice/british-indian-ocean-territory",
+  {
+    name: "antigua-and-barbuda",
+    urls: {
+      countryPage:
+        "https://www.gov.uk/foreign-travel-advice/antigua-and-barbuda",
+    },
+  },
+  {
+    name: "argentina",
+    urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/argentina" },
+  },
+  {
+    name: "australia",
+    urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/australia" },
+  },
+  {
+    name: "austria",
+    urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/austria" },
+  },
+  {
+    name: "bahrain",
+    urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/bahrain" },
+  },
+  {
+    name: "belize",
+    urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/belize" },
+  },
+  {
+    name: "bonaire-st-eustatius-saba",
+    urls: {
+      countryPage:
+        "https://www.gov.uk/foreign-travel-advice/bonaire-st-eustatius-saba",
+    },
+  },
+  {
+    name: "british-indian-ocean-territory",
+    urls: {
+      countryPage:
+        "https://www.gov.uk/foreign-travel-advice/british-indian-ocean-territory",
+    },
+  },
 ];
 
 const FAKE_COUNTRY_PAGE_LENGTH = 8;

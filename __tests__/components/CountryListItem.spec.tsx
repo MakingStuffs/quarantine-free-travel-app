@@ -6,7 +6,7 @@ const data: CountryInterface = {
   _id: "61f6f0b29f717e2bf65c9ce3" as any,
   name: "bangladesh",
   urls: {
-    covidPage:
+    entryRequirementsPage:
       "https://www.gov.uk/foreign-travel-advice/bangladesh/entry-requirements#entry-rules-in-response-to-coronavirus-covid-19",
     countryPage: "https://www.gov.uk/foreign-travel-advice/bangladesh",
   },
@@ -51,7 +51,7 @@ describe("<CountryListItem />", () => {
       <CountryListItem country={data} data-testid="item" />
     );
     expect(
-      baseElement.querySelector(`[href="${data.urls.covidPage}"]`)
+      baseElement.querySelector(`[href="${data.urls.entryRequirementsPage}"]`)
     ).toBeInTheDocument();
   });
 });

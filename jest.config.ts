@@ -32,6 +32,7 @@ const config = {
     "/node_modules/",
     "^.+\\.module\\.(css|sass|scss)$",
   ],
+  globalSetup: "<rootDir>/jest-setup-env.ts",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   modulePaths: ["<rootDir>"],
 };

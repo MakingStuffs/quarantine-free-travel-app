@@ -21,7 +21,7 @@ const CountryList: React.FC = () => {
       }
     })();
   }, []);
-
+  console.log(possibleCountries);
   return (
     <section>
       <StyledCountryList>
