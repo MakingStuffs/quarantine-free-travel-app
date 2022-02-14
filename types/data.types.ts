@@ -11,14 +11,18 @@ export interface RestrictionMention {
   matches?: string[];
 }
 
-export interface CountryInterface {
+export interface PartialCountryInterface {
+  name: string;
+  urls: {
+    entryRequirementsPage?: string;
+    countryPage: string;
+  };
+}
+
+export interface CountryInterface extends PartialCountryInterface {
   _id?: ObjectId | undefined;
   updated?: number;
   name: string;
-  urls: {
-    covidPage: string;
-    countryPage: string;
-  };
   restrictionData?: {
     mentions: RestrictionMention[];
   };
