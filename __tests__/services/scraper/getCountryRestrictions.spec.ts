@@ -1,7 +1,7 @@
 import { getCountryRestrictions } from "services/scraper/getCountryRestrictions.service";
 import fetch from "node-fetch";
-import { FAKE_COUNTRY_ARRAY } from "./fakeCountryArray";
-import { FAKE_COVID_PAGE_DOM } from "./fakeCovidPageDom";
+import { FAKE_COUNTRY_ARRAY } from "__mocks__/fakeCountryArray";
+import { FAKE_COVID_PAGE_DOM } from "__mocks__/fakeCovidPageDom";
 
 jest.mock("node-fetch", () => jest.fn());
 
@@ -26,7 +26,7 @@ describe("getCountryRestrictions", () => {
       expect(item.restrictionData?.mentions).toBeDefined();
       expect(item.urls).toBeDefined();
       expect(item.urls.countryPage).toBeDefined();
-      expect(item.urls.covidPage).toBeDefined();
+      expect(item.urls.entryRequirementsPage).toBeDefined();
       expect(item.updated).toBeDefined();
     });
   });
