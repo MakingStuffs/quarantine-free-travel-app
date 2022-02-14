@@ -82,9 +82,11 @@ const CountryListItemMeta: React.FC<{ data: CountryInterface }> = ({
             Travel Page
           </StyledCountryListLink>
         </Link>
-        <Link href={data.urls.covidPage} passHref={true}>
-          <StyledCountryListLink href={data.urls.covidPage}>
-            COVID Page
+        <Link href={data.urls.entryRequirementsPage as string} passHref={true}>
+          <StyledCountryListLink
+            href={data.urls.entryRequirementsPage as string}
+          >
+            Entry Page
           </StyledCountryListLink>
         </Link>
       </StyledCountryListLinks>
