@@ -12,11 +12,11 @@ const countriesSchema = {
     updated: {},
     urls: {
       bsonType: "object",
-      required: ["covidPage", "countryPage"],
+      required: ["entryRequirementsPage", "countryPage"],
       properties: {
-        covidPage: {
+        entryRequirementsPage: {
           bsonType: "string",
-          description: "'covidPage' is a required string",
+          description: "'entryRequirementsPage' is a required string",
         },
         countryPage: {
           bsonType: "string",
