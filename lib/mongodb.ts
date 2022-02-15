@@ -17,7 +17,7 @@ let cachedDb: null | Db = null;
 
 const connectToMongo = async (): Promise<{ db: Db; client: MongoClient }> => {
   // If we have cached client and DB just return them
-  if (cachedClient && cachedDb) {
+  if (!!cachedClient && !!cachedDb) {
     return {
       client: cachedClient,
       db: cachedDb,
@@ -43,8 +43,8 @@ const connectToMongo = async (): Promise<{ db: Db; client: MongoClient }> => {
   cachedClient = client;
   // return them
   return {
-    db,
-    client,
+    db: cachedDb,
+    client: cachedClient,
   };
 };
 
