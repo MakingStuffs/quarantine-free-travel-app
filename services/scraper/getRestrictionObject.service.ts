@@ -9,13 +9,14 @@ const getRestrictionObject = (
     case "QUARANTINE":
       mainRegex =
         /(?:\.|\n)?([\w\d\s'",:\-_’]*quarantine[\w\d\s,":\-_’]*)(?:\.|\n)?/gi;
-      conditionRegex = /quarantine[\w\s]{0,10}depending/gi;
+      conditionRegex =
+        /unvaccinated[\w\s,-_'"]+quarantined?|quarantined?[\w\s,-_'"]+(?:depending|unless)/gi;
       break;
     case "ISOLATION":
       mainRegex =
         /(?:\.|\n)?([\w\d\s'",:\-_’]*self(-| ){1}(isolation|isolate){1}[\w\d\s,":\-_’]*)(?:\.|\n)?/gi;
       conditionRegex =
-        /self(-| ){1}(isolation|isolate){1}[\w\s]{0,10}depending/gi;
+        /unvaccinated[\w\s,-_'"]+self(-| ){1}(isolation|isolate){1}|self(-| ){1}(isolation|isolate){1}[\w\s]+(?:depending|unless)/gi;
       break;
     case "CLOSED_BORDER":
       mainRegex =
