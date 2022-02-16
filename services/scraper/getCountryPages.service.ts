@@ -26,7 +26,11 @@ const getCountryPages = async (): Promise<PartialCountryInterface[]> => {
   ).reduce((output: any[], link: HTMLAnchorElement) => {
     const name = getCountryNameFromUrl(link.href);
     if (!!name) {
-      output.push({ name, urls: { countryPage: `${BASE_URL}${link}` } });
+      output.push({
+        name,
+        urls: { countryPage: `${BASE_URL}${link}` },
+        updated: Date.now(),
+      });
     }
     return output;
   }, []);

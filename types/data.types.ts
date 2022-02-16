@@ -17,11 +17,11 @@ export interface PartialCountryInterface {
     entryRequirementsPage?: string;
     countryPage: string;
   };
+  updated: number;
 }
 
 export interface CountryInterface extends PartialCountryInterface {
   _id?: ObjectId | undefined;
-  updated?: number;
   name: string;
   restrictionData?: {
     mentions: RestrictionMention[];

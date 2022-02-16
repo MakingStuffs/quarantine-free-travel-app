@@ -1,10 +1,6 @@
 import { JSDOM } from "jsdom";
 import fetch from "node-fetch";
-import {
-  CountryInterface,
-  RestrictionMention,
-  RestrictionMentionType,
-} from "types";
+import { CountryInterface, RestrictionMention } from "types";
 import { getMentions, getRestrictionObject } from ".";
 
 const getCountryRestrictions = async (
@@ -24,14 +20,24 @@ const getCountryRestrictions = async (
       window: { document },
     } = new JSDOM(domText);
     // Check if there is mention of quarantine without variables
-    const currentMentions: RestrictionMention[] = ((): RestrictionMention[] => {
-      const body = document.body.textContent;
+    const currentMentions: RestrictionMention[] = await (async (): Promise<
+      RestrictionMention[]
+    > => {
+      // Remove script element so we dont also match the schema JSON
+      document
+        .querySelectorAll('script[type="application/ld+json"]')
+        .forEach((elem) => {
+          elem.remove();
+        });
+      // Get the correct json
+      const domText = document.body.textContent?.replace(/\n/g, "");
       // There is no body so just exit as we cant do anything
-      if (!!!body) return [];
+      if (!!!domText) return [];
       // Get our condition objects
-      const quarantine = getRestrictionObject(body, "QUARANTINE");
-      const isolation = getRestrictionObject(body, "ISOLATION");
-      const closedBorders = getRestrictionObject(body, "CLOSED_BORDER");
+      const quarantine = getRestrictionObject(domText, "QUARANTINE");
+      const isolation = getRestrictionObject(domText, "ISOLATION");
+      const closedBorders = getRestrictionObject(domText, "CLOSED_BORDER");
+
       return getMentions([quarantine, isolation, closedBorders]);
     })();
     // add to the array

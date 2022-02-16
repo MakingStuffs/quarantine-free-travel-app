@@ -56,6 +56,50 @@ const getCopyText = (mentions: RestrictionMention[]) => {
   return output;
 };
 
+const getMatches = (mentions: RestrictionMention[]) => {
+  const quarantine = mentions.reduce(
+    (output: string[], mention: RestrictionMention) => {
+      if (
+        mention.type === "QUARANTINE" &&
+        mention.matches &&
+        mention?.matches?.length > 0
+      ) {
+        output = [...output, ...mention.matches];
+      }
+      return output;
+    },
+    []
+  );
+  const isolation = mentions.reduce(
+    (output: string[], mention: RestrictionMention) => {
+      if (
+        mention.type === "ISOLATION" &&
+        mention.matches &&
+        mention?.matches?.length > 0
+      ) {
+        output = [...output, ...mention.matches];
+      }
+      return output;
+    },
+    []
+  );
+  const closedBorder = mentions.reduce(
+    (output: string[], mention: RestrictionMention) => {
+      if (
+        mention.type === "CLOSED_BORDER" &&
+        mention.matches &&
+        mention?.matches?.length > 0
+      ) {
+        output = [...output, ...mention.matches];
+      }
+      return output;
+    },
+    []
+  );
+
+  return { quarantine, isolation, closedBorder };
+};
+
 const CountryListItemMeta: React.FC<{ data: CountryInterface }> = ({
   data,
 }) => {
@@ -68,6 +112,10 @@ const CountryListItemMeta: React.FC<{ data: CountryInterface }> = ({
   };
 
   const CopyText = getCopyText(data.restrictionData!.mentions);
+
+  const matches = !data.restrictionData?.mentions
+    ? null
+    : getMatches(data.restrictionData?.mentions);
 
   return (
     <StyledCountryInfoWrapper>
@@ -99,7 +147,16 @@ const CountryListItemMeta: React.FC<{ data: CountryInterface }> = ({
           <StyledCloseButton onClick={toggleModal}>
             <span>Close</span>
           </StyledCloseButton>
-          <StyledModalContent>{[...CopyText]}</StyledModalContent>
+          <StyledModalContent>
+            {[...CopyText]}
+            <StyledMatches>
+              {matches?.quarantine &&
+                matches.quarantine.length > 0 &&
+                matches.quarantine.map((match, i) => (
+                  <p key={`${Date.now()}-${i}-match-qu`}>{match}</p>
+                ))}
+            </StyledMatches>
+          </StyledModalContent>
         </StyledModal>
       </StyledCountryInfo>
     </StyledCountryInfoWrapper>
@@ -257,6 +314,11 @@ const StyledModalContent = styled.div`
     font-size: 0.75rem;
     text-align: left;
   }
+`;
+
+const StyledMatches = styled.div`
+  max-height: 50%;
+  overflow: auto;
 `;
 
 export { CountryListItemMeta };
