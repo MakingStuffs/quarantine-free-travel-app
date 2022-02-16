@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const getCopyText = (mentions: RestrictionMention[]) => {
-  let output = [];
+  let pills = [];
   // Does this country have quarantine with conditions?
   const isQuarantineConditions = mentions.find(
     (m: RestrictionMention) =>
@@ -36,24 +36,22 @@ const getCopyText = (mentions: RestrictionMention[]) => {
   );
 
   if (isQuarantineConditions) {
-    output.push([
-      <p key={Date.now()}>Mentions &lsquo;quarantine&lsquo;</p>,
-      <p key={Date.now() + 1}>Quarantine may be conditional</p>,
-    ]);
+    pills.push("Quarantine");
   }
   if (isIsolationConditions) {
-    output.push([
-      <p key={Date.now()}>Mentions &lsquo;isolation&lsquo;</p>,
-      <p key={Date.now() + 1}>Isolation may be conditional</p>,
-    ]);
+    pills.push("Self Isolation");
   }
   if (isClosedBorderConditions) {
-    output.push([
-      <p key={Date.now()}>Mentions &lsquo;closed borders&lsquo;</p>,
-      <p key={Date.now() + 1}>Closed borders may be conditional</p>,
-    ]);
+    pills.push("Closed Borders");
   }
-  return output;
+  return pills.length > 0 ? (
+    <p>
+      Mentions:{" "}
+      {pills.map((pill, i) => (
+        <span key={`${Date.now()}-pill-${i}`}>{pill}</span>
+      ))}
+    </p>
+  ) : null;
 };
 
 const getMatches = (mentions: RestrictionMention[]) => {
@@ -120,7 +118,7 @@ const CountryListItemMeta: React.FC<{ data: CountryInterface }> = ({
   return (
     <StyledCountryInfoWrapper>
       <StyledCountryListLinks>
-        {CopyText && CopyText.length > 0 ? (
+        {!!CopyText ? (
           <StyledCountryListButton onClick={toggleModal}>
             Conditions
           </StyledCountryListButton>
@@ -148,7 +146,8 @@ const CountryListItemMeta: React.FC<{ data: CountryInterface }> = ({
             <span>Close</span>
           </StyledCloseButton>
           <StyledModalContent>
-            {[...CopyText]}
+            {CopyText}
+            <h4>Matched Text</h4>
             <StyledMatches>
               {matches?.quarantine &&
                 matches.quarantine.length > 0 &&
@@ -305,6 +304,7 @@ const StyledModal = styled.div`
   max-width: 480px;
   width: 95%;
   z-index: 999;
+  max-height: 80%;
 `;
 
 const StyledModalContent = styled.div`
@@ -313,11 +313,27 @@ const StyledModalContent = styled.div`
     line-height: 1.5rem;
     font-size: 0.75rem;
     text-align: left;
+
+    > span {
+      margin: 0 4px;
+      background-color: var(--warning);
+      color: var(--dark);
+      border-radius: 5px;
+      padding: 0 4px;
+      white-space: nowrap;
+    }
+  }
+  > h4 {
+    font-size: 1.5rem;
+    font-weight: 900;
   }
 `;
 
 const StyledMatches = styled.div`
+  line-height: 1.5rem;
+  font-size: 0.75rem;
   max-height: 50%;
+  height: 300px;
   overflow: auto;
 `;
 
