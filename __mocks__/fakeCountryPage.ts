@@ -1134,4 +1134,297 @@ const FAKE_COUNTRY_PAGES = [
 
 const FAKE_COUNTRY_PAGE_LENGTH = 8;
 
-export { FAKE_COUNTRY_PAGE, FAKE_COUNTRY_PAGES, FAKE_COUNTRY_PAGE_LENGTH };
+const FAKE_JSON_RESPONSE = {
+  "@context": "http://schema.org",
+  "@type": "Article",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id":
+      "https://www.gov.uk/foreign-travel-advice/bangladesh/entry-requirements",
+  },
+  name: "Entry requirements - Bangladesh travel advice",
+  datePublished: "2013-03-15T00:00:00.000+00:00",
+  dateModified: "2022-02-09T14:50:13.000+00:00",
+  text: "Latest travel advice for Bangladesh including how coronavirus (COVID-19) is affecting travel and entry requirements at this time as well as safety and security and local laws and customs",
+  publisher: {
+    "@type": "Organization",
+    name: "GOV.UK",
+    url: "https://www.gov.uk",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-logo-e5962881254c9adb48f94d2f627d3bb67f258a6cbccc969e80abb7bbe4622976.png",
+    },
+  },
+  image: [
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-1x1-5ceffac04f7f6d4f421bd1d36dbb723ef48c15426d7f77f90be80a83af3c747e.png",
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-4x3-fcfe16abb1a015848e50d2ea797666a9eaf5158dca38ddfb1e52dc8c0543ab74.png",
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-16x9-fcf616879a7b37970df4d2117de962e08f7d057674ef1af6063dcdd529424eee.png",
+  ],
+  author: {
+    "@type": "Organization",
+    name: "Foreign, Commonwealth & Development Office",
+    url: "https://www.gov.uk/government/organisations/foreign-commonwealth-development-office",
+  },
+  about: [
+    {
+      "@context": "http://schema.org",
+      "@type": "Thing",
+      sameAs: "https://www.gov.uk/world/living-in-bangladesh",
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "Thing",
+      sameAs: "https://www.gov.uk/world/travelling-to-bangladesh",
+    },
+  ],
+  headLine: "Entry requirements - Bangladesh travel advice",
+  description:
+    "Latest travel advice for Bangladesh including how coronavirus (COVID-19) is affecting travel and entry requirements at this time as well as safety and security and local laws and customs",
+  articleBody:
+    '<p>This page reflects the UK government’s understanding of current rules for people travelling on a full ‘British Citizen’ passport, for the most common types of travel.</p>\n\n<p>The authorities in Bangladesh set and enforce entry rules. For further information <a href="https://www.gov.uk/government/publications/foreign-embassies-in-the-uk">contact the embassy, high commission or consulate</a> of the country or territory you’re travelling to. You should also consider checking with your transport provider or travel company to make sure your passport and other travel documents meet their requirements.</p>\n\n<h2 id="entry-rules-in-response-to-coronavirus-covid-19">Entry rules in response to coronavirus (COVID-19)</h2>\n\n<h3 id="entry-to-bangladesh">Entry to Bangladesh</h3>\n\n<p>Passengers arriving from the UK will need:</p>\n\n<ul>\n  <li>A medical certificate indicating a negative PCR test taken within 48 hours prior to departure (for passengers aged 12 or over)</li>\n  <li>Confirmation of your vaccination status, with vaccination course completed 14 days before entry, if you are relying on a completed COVID-19 vaccination course for quarantine exemptions  (See Quarantine requirements)</li>\n  <li>A completed Health Declaration Form and Passenger Locator Form provided by cabin crew.</li>\n</ul>\n\n<p>You may be subjected to additional health screening measures at the airport.</p>\n\n<p>You should not use the NHS testing service to get a test in order to facilitate your travel to another country. You should arrange to take a private test.</p>\n\n<h3 id="quarantine-requirements">Quarantine requirements</h3>\n\n<p>Bangladesh operates a number of quarantine regimes depending on passengers’ circumstances:</p>\n\n<ul>\n  <li>Passengers arriving from the majority of countries, including the UK, but excluding those territories named in the paragraphs below, are exempt from quarantine provided they can offer evidence of having completed a WHO approved vaccination course at least 14 day prior to their arrival in Bangladesh. Arrivals who are unable to provide this evidence are required to complete a 14 day period of home quarantine</li>\n  <li>Passengers who have visited, or transited Botswana, Eswatini, Ghana, Lesotho, Namibia, South Africa and Zimbabwe, within the preceding 14 days of 4 December, are required to complete mandatory 14 day quarantine at a government nominated quarantine hotel upon arrival in Bangladesh, regardless of vaccination status</li>\n  <li>Passengers whose journey originates from, or who have visited within the preceding 15 days of 4 December, Armenia, Bulgaria, Estonia, Georgia, Latvia, Lithuania, Moldova, Mongolia, the Palestinian Occupied Territories, Romania, Serbia, Slovenia and Ukraine are also required to quarantine. However, those that can offer evidence of having completed a WHO approved vaccination course at least 14 days prior to their arrival in Bangladesh, are able to quarantine at home for seven days. Those that are unable to provide this evidence are required to complete a period of quarantine at a government nominated quarantine hotel. This quarantine can be completed by testing negative for COVID-19 on the seventh day. You should note that transiting the countries in this paragraph, without exiting the airport, does not qualify as a visit</li>\n  <li>Children under 18 are able to follow the same quarantine regime that applies to those family members they are travelling with, regardless of their vaccination status</li>\n  <li>Passengers that are subject to mandatory quarantine hotel stay should confirm their stay prior to travel. Proof of a quarantine hotel reservation will be required at airport check-in</li>\n  <li>In all circumstances, people staying in a government approved hotel, government facility or hospital will need to cover the costs of those stays and any necessary COVID-19 tests</li>\n  <li>In all circumstances, anyone displaying COVID-19 symptoms on arrival will be transferred to a designated government hospital where their quarantine period will be assessed and determined.</li>\n</ul>\n\n<p>The Bangladesh authorities may retain passports of any passengers in quarantine and will return them at the end of the quarantine period.</p>\n\n<p>Passengers with a No Visa Required certificate (an arrangement for foreign nationals of Bangladeshi heritage) arriving in Bangladesh without a medical certificate indicating they are COVID-19 negative, or such passengers who display symptoms, will be transferred to a government facility where their quarantine period will be assessed and determined.</p>\n\n<h2 id="regular-entry-requirements">Regular entry requirements</h2>\n\n<h3 id="visas">Visas</h3>\n\n<p>You will need a visa to enter Bangladesh. You can get a visa from the Bangladesh High Commission in London. In some limited circumstances visas may be available on arrival, which includes categories of foreign investors and those of Bangladesh descent. We strongly recommend that you confirm the availability of such visa arrangements, including documentation requirements, with the Bangladeshi authorities in advance of travel.</p>\n\n<p>Foreign nationals currently in Bangladesh whose visas have expired have the option to extend their visa. There is a visa extension fee for this service, in addition to a penalty fee for overstaying. Visa extensions are available at the Department of Immigration and Passport of Bangladesh.</p>\n\n<p>If you intend to use Dhaka as a hub to visit other countries in the region, make sure you get a multiple entry visa. If you’re intending to work in Bangladesh make sure you get the correct visa before you travel.</p>\n\n<p>If you have had your passport renewed in Bangladesh, you will need a new visa. The Bangladesh Immigration &amp; Passport Department (telephone: 880 2 8159878 / 8123788 / 8123323) is able to issue an ‘exit visa’ or a ‘no visa required’ stamp. Officers there are unlikely to speak English, so you may need an interpreter.</p>\n\n<p>Make sure you have an entry stamp placed in your passport on entry into Bangladesh otherwise you may have problems on departure.</p>\n\n<h3 id="passport-validity">Passport validity</h3>\n\n<p>Your passport should be valid for at least 6 months when applying for a visa to visit Bangladesh.</p>\n\n<h3 id="uk-emergency-travel-documents">UK Emergency Travel Documents</h3>\n\n<p>UK Emergency Travel Documents (ETDs) are accepted for entry, airside transit and exit from Bangladesh. Holders of an ETD must apply for the appropriate Bangladesh visa to enter Bangladesh.</p>\n\n<h3 id="yellow-fever-certificate-requirements">Yellow fever certificate requirements</h3>\n\n<p>Check whether you need a yellow fever certificate by visiting the National Travel Health Network and Centre’s <a rel="external" href="http://travelhealthpro.org.uk/country/22/bangladesh#Vaccine_recommendations">TravelHealthPro website</a>.</p>\n\n<h3 id="working-in-bangladesh">Working in Bangladesh</h3>\n\n<p>Foreign nationals working in Bangladesh must get an Income Tax Clearance Certificate or an Income Tax Exemption Certificate before each departure from Bangladesh. Full details are available on the <a rel="external" href="http://www.nbr.gov.bd/">Bangladesh Board of Revenue website</a>.</p>\n',
+};
+
+const FAKE_JSON_CALL = `{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.gov.uk/foreign-travel-advice/bangladesh/entry-requirements"
+  },
+  "name": "Entry requirements - Bangladesh travel advice",
+  "datePublished": "2013-03-15T00:00:00.000+00:00",
+  "dateModified": "2022-01-12T15:36:37.000+00:00",
+  "text": "Latest travel advice for Bangladesh including how coronavirus (COVID-19) is affecting travel and entry requirements at this time as well as safety and security and local laws and customs",
+  "publisher": {
+    "@type": "Organization",
+    "name": "GOV.UK",
+    "url": "https://www.gov.uk",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-logo-e5962881254c9adb48f94d2f627d3bb67f258a6cbccc969e80abb7bbe4622976.png"
+    }
+  },
+  "image": [
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-1x1-5ceffac04f7f6d4f421bd1d36dbb723ef48c15426d7f77f90be80a83af3c747e.png",
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-4x3-fcfe16abb1a015848e50d2ea797666a9eaf5158dca38ddfb1e52dc8c0543ab74.png",
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-16x9-fcf616879a7b37970df4d2117de962e08f7d057674ef1af6063dcdd529424eee.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Foreign, Commonwealth & Development Office",
+    "url": "https://www.gov.uk/government/organisations/foreign-commonwealth-development-office"
+  },
+  "about": [
+    {
+      "@context": "http://schema.org",
+      "@type": "Thing",
+      "sameAs": "https://www.gov.uk/world/living-in-bangladesh"
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "Thing",
+      "sameAs": "https://www.gov.uk/world/travelling-to-bangladesh"
+    }
+  ],
+  "headLine": "Entry requirements - Bangladesh travel advice",
+  "description": "Latest travel advice for Bangladesh including how coronavirus (COVID-19) is affecting travel and entry requirements at this time as well as safety and security and local laws and customs",
+  "articleBody": "<p>This page reflects the UK government’s understanding of current rules for people travelling on a full ‘British Citizen’ passport, for the most common types of travel.</p>
+
+<p>The authorities in Bangladesh set and enforce entry rules. For further information <a href="https://www.gov.uk/government/publications/foreign-embassies-in-the-uk">contact the embassy, high commission or consulate</a> of the country or territory you’re travelling to. You should also consider checking with your transport provider or travel company to make sure your passport and other travel documents meet their requirements.</p>
+
+<h2 id="entry-rules-in-response-to-coronavirus-covid-19">Entry rules in response to coronavirus (COVID-19)</h2>
+
+<h3 id="entry-to-bangladesh">Entry to Bangladesh</h3>
+
+<p>Passengers arriving from the UK will need:</p>
+
+<ul>
+  <li>A medical certificate indicating a negative PCR test taken within 48 hours prior to departure (for passengers aged 12 or over)</li>
+  <li>Confirmation of your vaccination status, with vaccination course completed 14 days before entry, if you are relying on a completed COVID-19 vaccination course for quarantine exemptions  (See Quarantine requirements)</li>
+  <li>A completed Health Declaration Form and Passenger Locator Form provided by cabin crew.</li>
+</ul>
+
+<p>You may be subjected to additional health screening measures at the airport.</p>
+
+<p>You should not use the NHS testing service to get a test in order to facilitate your travel to another country. You should arrange to take a private test.</p>
+
+<h3 id="quarantine-requirements">Quarantine requirements</h3>
+
+<p>Bangladesh operates a number of quarantine regimes depending on passengers’ circumstances:</p>
+
+<ul>
+  <li>Passengers arriving from the majority of countries, including the UK, but excluding those territories named in the paragraphs below, are exempt from quarantine provided they can offer evidence of having completed a WHO approved vaccination course at least 14 day prior to their arrival in Bangladesh. Arrivals who are unable to provide this evidence are required to complete a 14 day period of home quarantine</li>
+  <li>Passengers who have visited, or transited Botswana, Eswatini, Ghana, Lesotho, Namibia, South Africa and Zimbabwe, within the preceding 14 days of 4 December, are required to complete mandatory 14 day quarantine at a government nominated quarantine hotel upon arrival in Bangladesh, regardless of vaccination status</li>
+  <li>Passengers whose journey originates from, or who have visited within the preceding 15 days of 4 December, Armenia, Bulgaria, Estonia, Georgia, Latvia, Lithuania, Moldova, Mongolia, the Palestinian Occupied Territories, Romania, Serbia, Slovenia and Ukraine are also required to quarantine. However, those that can offer evidence of having completed a WHO approved vaccination course at least 14 days prior to their arrival in Bangladesh, are able to quarantine at home for seven days. Those that are unable to provide this evidence are required to complete a period of quarantine at a government nominated quarantine hotel. This quarantine can be completed by testing negative for COVID-19 on the seventh day. You should note that transiting the countries in this paragraph, without exiting the airport, does not qualify as a visit</li>
+  <li>Children under 18 are able to follow the same quarantine regime that applies to those family members they are travelling with, regardless of their vaccination status</li>
+  <li>Passengers that are subject to mandatory quarantine hotel stay should confirm their stay prior to travel. Proof of a quarantine hotel reservation will be required at airport check-in</li>
+  <li>In all circumstances, people staying in a government approved hotel, government facility or hospital will need to cover the costs of those stays and any necessary COVID-19 tests</li>
+  <li>In all circumstances, anyone displaying COVID-19 symptoms on arrival will be transferred to a designated government hospital where their quarantine period will be assessed and determined.</li>
+</ul>
+
+<p>The Bangladesh authorities may retain passports of any passengers in quarantine and will return them at the end of the quarantine period.</p>
+
+<p>Passengers with a No Visa Required certificate (an arrangement for foreign nationals of Bangladeshi heritage) arriving in Bangladesh without a medical certificate indicating they are COVID-19 negative, or such passengers who display symptoms, will be transferred to a government facility where their quarantine period will be assessed and determined.</p>
+
+<h2 id="regular-entry-requirements">Regular entry requirements</h2>
+
+<h3 id="visas">Visas</h3>
+
+<p>You will need a visa to enter Bangladesh. You can get a visa from the Bangladesh High Commission in London. In some limited circumstances visas may be available on arrival, which includes categories of foreign investors and those of Bangladesh descent. We strongly recommend that you confirm the availability of such visa arrangements, including documentation requirements, with the Bangladeshi authorities in advance of travel.</p>
+
+<p>Foreign nationals currently in Bangladesh whose visas have expired have the option to extend their visa. There is a visa extension fee for this service, in addition to a penalty fee for overstaying. Visa extensions are available at the Department of Immigration and Passport of Bangladesh.</p>
+
+<p>If you intend to use Dhaka as a hub to visit other countries in the region, make sure you get a multiple entry visa. If you’re intending to work in Bangladesh make sure you get the correct visa before you travel.</p>
+
+<p>If you have had your passport renewed in Bangladesh, you will need a new visa. The Bangladesh Immigration &amp; Passport Department (telephone: 880 2 8159878 / 8123788 / 8123323) is able to issue an ‘exit visa’ or a ‘no visa required’ stamp. Officers there are unlikely to speak English, so you may need an interpreter.</p>
+
+<p>Make sure you have an entry stamp placed in your passport on entry into Bangladesh otherwise you may have problems on departure.</p>
+
+<h3 id="passport-validity">Passport validity</h3>
+
+<p>Your passport should be valid for at least 6 months when applying for a visa to visit Bangladesh.</p>
+
+<h3 id="uk-emergency-travel-documents">UK Emergency Travel Documents</h3>
+
+<p>UK Emergency Travel Documents (ETDs) are accepted for entry, airside transit and exit from Bangladesh. Holders of an ETD must apply for the appropriate Bangladesh visa to enter Bangladesh.</p>
+
+<h3 id="yellow-fever-certificate-requirements">Yellow fever certificate requirements</h3>
+
+<p>Check whether you need a yellow fever certificate by visiting the National Travel Health Network and Centre’s <a rel="external" href="http://travelhealthpro.org.uk/country/22/bangladesh#Vaccine_recommendations">TravelHealthPro website</a>.</p>
+
+<h3 id="working-in-bangladesh">Working in Bangladesh</h3>
+
+<p>Foreign nationals working in Bangladesh must get an Income Tax Clearance Certificate or an Income Tax Exemption Certificate before each departure from Bangladesh. Full details are available on the <a rel="external" href="http://www.nbr.gov.bd/">Bangladesh Board of Revenue website</a>.</p>
+"
+}
+
+  at services/scraper/getCountryRestrictions.service.ts:30:15
+
+console.log
+Checking country venezuela
+
+  at getCountryRestrictions (services/scraper/getCountryRestrictions.service.ts:15:13)
+
+console.log
+
+  {
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.gov.uk/foreign-travel-advice/bangladesh/entry-requirements"
+  },
+  "name": "Entry requirements - Bangladesh travel advice",
+  "datePublished": "2013-03-15T00:00:00.000+00:00",
+  "dateModified": "2022-01-12T15:36:37.000+00:00",
+  "text": "Latest travel advice for Bangladesh including how coronavirus (COVID-19) is affecting travel and entry requirements at this time as well as safety and security and local laws and customs",
+  "publisher": {
+    "@type": "Organization",
+    "name": "GOV.UK",
+    "url": "https://www.gov.uk",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-logo-e5962881254c9adb48f94d2f627d3bb67f258a6cbccc969e80abb7bbe4622976.png"
+    }
+  },
+  "image": [
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-1x1-5ceffac04f7f6d4f421bd1d36dbb723ef48c15426d7f77f90be80a83af3c747e.png",
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-4x3-fcfe16abb1a015848e50d2ea797666a9eaf5158dca38ddfb1e52dc8c0543ab74.png",
+    "https://www.gov.uk/assets/government-frontend/govuk_publishing_components/govuk-schema-placeholder-16x9-fcf616879a7b37970df4d2117de962e08f7d057674ef1af6063dcdd529424eee.png"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Foreign, Commonwealth & Development Office",
+    "url": "https://www.gov.uk/government/organisations/foreign-commonwealth-development-office"
+  },
+  "about": [
+    {
+      "@context": "http://schema.org",
+      "@type": "Thing",
+      "sameAs": "https://www.gov.uk/world/living-in-bangladesh"
+    },
+    {
+      "@context": "http://schema.org",
+      "@type": "Thing",
+      "sameAs": "https://www.gov.uk/world/travelling-to-bangladesh"
+    }
+  ],
+  "headLine": "Entry requirements - Bangladesh travel advice",
+  "description": "Latest travel advice for Bangladesh including how coronavirus (COVID-19) is affecting travel and entry requirements at this time as well as safety and security and local laws and customs",
+  "articleBody": "<p>This page reflects the UK government’s understanding of current rules for people travelling on a full ‘British Citizen’ passport, for the most common types of travel.</p>
+
+<p>The authorities in Bangladesh set and enforce entry rules. For further information <a href="https://www.gov.uk/government/publications/foreign-embassies-in-the-uk">contact the embassy, high commission or consulate</a> of the country or territory you’re travelling to. You should also consider checking with your transport provider or travel company to make sure your passport and other travel documents meet their requirements.</p>
+
+<h2 id="entry-rules-in-response-to-coronavirus-covid-19">Entry rules in response to coronavirus (COVID-19)</h2>
+
+<h3 id="entry-to-bangladesh">Entry to Bangladesh</h3>
+
+<p>Passengers arriving from the UK will need:</p>
+
+<ul>
+  <li>A medical certificate indicating a negative PCR test taken within 48 hours prior to departure (for passengers aged 12 or over)</li>
+  <li>Confirmation of your vaccination status, with vaccination course completed 14 days before entry, if you are relying on a completed COVID-19 vaccination course for quarantine exemptions  (See Quarantine requirements)</li>
+  <li>A completed Health Declaration Form and Passenger Locator Form provided by cabin crew.</li>
+</ul>
+
+<p>You may be subjected to additional health screening measures at the airport.</p>
+
+<p>You should not use the NHS testing service to get a test in order to facilitate your travel to another country. You should arrange to take a private test.</p>
+
+<h3 id="quarantine-requirements">Quarantine requirements</h3>
+
+<p>Bangladesh operates a number of quarantine regimes depending on passengers’ circumstances:</p>
+
+<ul>
+  <li>Passengers arriving from the majority of countries, including the UK, but excluding those territories named in the paragraphs below, are exempt from quarantine provided they can offer evidence of having completed a WHO approved vaccination course at least 14 day prior to their arrival in Bangladesh. Arrivals who are unable to provide this evidence are required to complete a 14 day period of home quarantine</li>
+  <li>Passengers who have visited, or transited Botswana, Eswatini, Ghana, Lesotho, Namibia, South Africa and Zimbabwe, within the preceding 14 days of 4 December, are required to complete mandatory 14 day quarantine at a government nominated quarantine hotel upon arrival in Bangladesh, regardless of vaccination status</li>
+  <li>Passengers whose journey originates from, or who have visited within the preceding 15 days of 4 December, Armenia, Bulgaria, Estonia, Georgia, Latvia, Lithuania, Moldova, Mongolia, the Palestinian Occupied Territories, Romania, Serbia, Slovenia and Ukraine are also required to quarantine. However, those that can offer evidence of having completed a WHO approved vaccination course at least 14 days prior to their arrival in Bangladesh, are able to quarantine at home for seven days. Those that are unable to provide this evidence are required to complete a period of quarantine at a government nominated quarantine hotel. This quarantine can be completed by testing negative for COVID-19 on the seventh day. You should note that transiting the countries in this paragraph, without exiting the airport, does not qualify as a visit</li>
+  <li>Children under 18 are able to follow the same quarantine regime that applies to those family members they are travelling with, regardless of their vaccination status</li>
+  <li>Passengers that are subject to mandatory quarantine hotel stay should confirm their stay prior to travel. Proof of a quarantine hotel reservation will be required at airport check-in</li>
+  <li>In all circumstances, people staying in a government approved hotel, government facility or hospital will need to cover the costs of those stays and any necessary COVID-19 tests</li>
+  <li>In all circumstances, anyone displaying COVID-19 symptoms on arrival will be transferred to a designated government hospital where their quarantine period will be assessed and determined.</li>
+</ul>
+
+<p>The Bangladesh authorities may retain passports of any passengers in quarantine and will return them at the end of the quarantine period.</p>
+
+<p>Passengers with a No Visa Required certificate (an arrangement for foreign nationals of Bangladeshi heritage) arriving in Bangladesh without a medical certificate indicating they are COVID-19 negative, or such passengers who display symptoms, will be transferred to a government facility where their quarantine period will be assessed and determined.</p>
+
+<h2 id="regular-entry-requirements">Regular entry requirements</h2>
+
+<h3 id="visas">Visas</h3>
+
+<p>You will need a visa to enter Bangladesh. You can get a visa from the Bangladesh High Commission in London. In some limited circumstances visas may be available on arrival, which includes categories of foreign investors and those of Bangladesh descent. We strongly recommend that you confirm the availability of such visa arrangements, including documentation requirements, with the Bangladeshi authorities in advance of travel.</p>
+
+<p>Foreign nationals currently in Bangladesh whose visas have expired have the option to extend their visa. There is a visa extension fee for this service, in addition to a penalty fee for overstaying. Visa extensions are available at the Department of Immigration and Passport of Bangladesh.</p>
+
+<p>If you intend to use Dhaka as a hub to visit other countries in the region, make sure you get a multiple entry visa. If you’re intending to work in Bangladesh make sure you get the correct visa before you travel.</p>
+
+<p>If you have had your passport renewed in Bangladesh, you will need a new visa. The Bangladesh Immigration &amp; Passport Department (telephone: 880 2 8159878 / 8123788 / 8123323) is able to issue an ‘exit visa’ or a ‘no visa required’ stamp. Officers there are unlikely to speak English, so you may need an interpreter.</p>
+
+<p>Make sure you have an entry stamp placed in your passport on entry into Bangladesh otherwise you may have problems on departure.</p>
+
+<h3 id="passport-validity">Passport validity</h3>
+
+<p>Your passport should be valid for at least 6 months when applying for a visa to visit Bangladesh.</p>
+
+<h3 id="uk-emergency-travel-documents">UK Emergency Travel Documents</h3>
+
+<p>UK Emergency Travel Documents (ETDs) are accepted for entry, airside transit and exit from Bangladesh. Holders of an ETD must apply for the appropriate Bangladesh visa to enter Bangladesh.</p>
+
+<h3 id="yellow-fever-certificate-requirements">Yellow fever certificate requirements</h3>
+
+<p>Check whether you need a yellow fever certificate by visiting the National Travel Health Network and Centre’s <a rel="external" href="http://travelhealthpro.org.uk/country/22/bangladesh#Vaccine_recommendations">TravelHealthPro website</a>.</p>
+
+<h3 id="working-in-bangladesh">Working in Bangladesh</h3>
+
+<p>Foreign nationals working in Bangladesh must get an Income Tax Clearance Certificate or an Income Tax Exemption Certificate before each departure from Bangladesh. Full details are available on the <a rel="external" href="http://www.nbr.gov.bd/">Bangladesh Board of Revenue website</a>.</p>
+"
+}`;
+
+export {
+  FAKE_COUNTRY_PAGE,
+  FAKE_COUNTRY_PAGES,
+  FAKE_COUNTRY_PAGE_LENGTH,
+  FAKE_JSON_RESPONSE,
+  FAKE_JSON_CALL,
+};
