@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import { FAKE_COUNTRY_ARRAY } from "__mocks__/fakeCountryArray";
 import { FAKE_COVID_PAGE_DOM } from "__mocks__/fakeCovidPageDom";
 import { waitFor } from "@testing-library/react";
-import { FAKE_JSON_CALL, FAKE_JSON_RESPONSE } from "__mocks__/fakeCountryPage";
+import { FAKE_JSON_RESPONSE } from "__mocks__/fakeCountryPage";
 
 jest.mock("node-fetch", () => jest.fn());
 
