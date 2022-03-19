@@ -8,19 +8,19 @@ const getRestrictionObject = (
   switch (type) {
     case "QUARANTINE":
       mainRegex =
-        /<[a-z0-9]+>([\w\d\s'",:\-_’]*quarantine[\w\d\s,":\-_’]*)<\/[a-z0-9]+>/gi;
+        /(?:\.|\n)?([\w\d\s'",:\-_’]*quarantine[\w\d\s,":\-_’]*)(?:\.|\n)?/gi;
       conditionRegex =
         /unvaccinated[\w\s,-_'"]+quarantined?|quarantined?[\w\s,-_'"]+(?:depending|unless)/gi;
       break;
     case "ISOLATION":
       mainRegex =
-        /<[a-z0-9]+>([\w\d\s'",:\-_’]*self(-| ){1}(isolation|isolate){1}[\w\d\s,":\-_’]*)<\/[a-z0-9]+>/gi;
+        /(?:\.|\n)?([\w\d\s'",:\-_’]*self(-| ){1}(isolation|isolate){1}[\w\d\s,":\-_’]*)(?:\.|\n)?/gi;
       conditionRegex =
         /unvaccinated[\w\s,-_'"]+self(-| ){1}(isolation|isolate){1}|self(-| ){1}(isolation|isolate){1}[\w\s]+(?:depending|unless)/gi;
       break;
     case "CLOSED_BORDER":
       mainRegex =
-        /<[a-z0-9]+>([\w\d\s'",:\-_’]*closed borders?[\w\d\s,":\-_’]*)<\/[a-z0-9]+>/gi;
+        /(?:\.|\n)?([\w\d\s'",:\-_’]*closed borders?[\w\d\s,":\-_’]*)(?:\.|\n)?/gi;
       conditionRegex = /closed borders?[\w\s]{0,10}depending/gi;
       break;
   }
