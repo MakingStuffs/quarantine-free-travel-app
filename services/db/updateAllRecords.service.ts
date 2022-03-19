@@ -11,17 +11,17 @@ const updateAllRecords = async (newRecords: CountryInterface[]) => {
     );
     // Copy the array so we can systematically add/update records
     const temp = [...newRecords];
-    await collection.find({}).forEach((doc) => {
+    await collection.find().forEach((doc) => {
       // Find the existing record
-      const toUpdate = newRecords.find((r, i) => {
-        if (r.name === doc.name) {
+      const toUpdate = temp.find((r, i) => {
+        if (r.name.toLowerCase() === doc.name.toLowerCase()) {
           // Pop this from the temp array so we dont double insert
           temp.splice(i, 1);
           return true;
-        }
+        } else return false;
       });
       // If it exists update it
-      if (toUpdate) {
+      if (!!toUpdate) {
         collection.updateOne(
           { name: toUpdate.name },
           {
@@ -35,8 +35,9 @@ const updateAllRecords = async (newRecords: CountryInterface[]) => {
       }
     });
     // insert the left overs
-    collection.insertMany(temp);
-
+    if (temp.length > 0) {
+      collection.insertMany(temp);
+    }
     return true;
   } catch (e) {
     console.warn(e);
