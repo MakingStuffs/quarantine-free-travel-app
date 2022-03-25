@@ -1,25 +1,25 @@
 import { getRestrictionObject } from "services/scraper/getRestrictionObject.service";
 
 const MENTIONS_QUARANTINE: string =
-  "This page is one which has quarantine and you must follow it";
+  "<p>This page is one which has quarantine and you must follow it</p>";
 
 const MENTIONS_QUARANTINE_COND: string =
-  "This page is one which has quarantine which is depending on your vaccination status";
+  "<p>This page is one which has quarantine which is depending on your vaccination status</p>";
 
 const MENTIONS_ISOLATION: string =
-  "This page is one which has self isolation and you must follow it";
+  "<p>This page is one which has self isolation and you must follow it</p>";
 
 const MENTIONS_ISOLATION_COND: string =
-  "This page is one which has self isolation which is depending on your vaccination status";
+  "<p>This page is one which has self isolation which is depending on your vaccination status</p>";
 
 const MENTIONS_CLOSED_BORDER: string =
-  "This page is one which has closed borders and you must follow it";
+  "<p>This page is one which has closed borders and you must follow it</p>";
 
 const MENTIONS_CLOSED_BORDER_COND: string =
-  "This page is one which has closed borders which is depending on your vaccination status";
+  "<p>This page is one which has closed borders which is depending on your vaccination status</p>";
 
 const NO_MENTIONS: string =
-  "This does not mention any of the words we are looking for.";
+  "<p>This does not mention any of the words we are looking for.</p>";
 
 describe("getRestrictionObject", () => {
   it("correctly identifies type", () => {

@@ -29,7 +29,7 @@ const getCopyText = (mentions: RestrictionMention[]) => {
   const isClosedBorderConditions = mentions.find(
     (m: RestrictionMention) =>
       typeof m === "object" &&
-      m.type === "ISOLATION" &&
+      m.type === "CLOSED_BORDER" &&
       m.matches &&
       m.matches.length > 0 &&
       m.conditions
@@ -45,12 +45,13 @@ const getCopyText = (mentions: RestrictionMention[]) => {
     pills.push("Closed Borders");
   }
   return pills.length > 0 ? (
-    <p>
-      Mentions:{" "}
-      {pills.map((pill, i) => (
-        <span key={`${Date.now()}-pill-${i}`}>{pill}</span>
-      ))}
-    </p>
+    <div>
+      <div>
+        {pills.map((pill, i) => (
+          <span key={`${Date.now()}-pill-${i}`}>{pill}</span>
+        ))}
+      </div>
+    </div>
   ) : null;
 };
 
@@ -146,8 +147,10 @@ const CountryListItemMeta: React.FC<{ data: CountryInterface }> = ({
             <span>Close</span>
           </StyledCloseButton>
           <StyledModalContent>
+            <h4>
+              Matched Text for <span>{data.name}</span>
+            </h4>
             {CopyText}
-            <h4>Matched Text</h4>
             <StyledMatches>
               {matches?.quarantine &&
                 matches.quarantine.length > 0 &&
@@ -293,7 +296,7 @@ const StyledModal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #2a313c;
-  padding: calc(1.5rem + 40px) 1rem;
+  padding: 1.5rem 1rem;
   border-radius: 25px;
   box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.3);
   text-align: center;
@@ -304,37 +307,57 @@ const StyledModal = styled.div`
   max-width: 480px;
   width: 95%;
   z-index: 999;
-  max-height: 80%;
+  height: 90%;
 `;
 
 const StyledModalContent = styled.div`
-  > p {
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  > div:first-of-type {
     line-height: 1.5rem;
     font-size: 0.75rem;
     text-align: left;
 
-    > span {
-      margin: 0 4px;
-      background-color: var(--warning);
-      color: var(--dark);
-      border-radius: 5px;
-      padding: 0 4px;
-      white-space: nowrap;
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+
+      span {
+        margin: 8px 4px;
+        background-color: var(--warning);
+        color: var(--dark);
+        border-radius: 5px;
+        padding: 0 4px;
+        white-space: nowrap;
+        text-align: center;
+        width: calc(33% - 8px);
+      }
     }
   }
   > h4 {
     font-size: 1.5rem;
     font-weight: 900;
+    margin: 0 50px 2rem;
+
+    > span {
+      text-transform: capitalize;
+      padding-bottom: 2px;
+      border-bottom: 2px solid var(--warning);
+    }
   }
 `;
 
 const StyledMatches = styled.div`
   line-height: 1.5rem;
   font-size: 0.75rem;
-  max-height: 50%;
-  height: 300px;
+  flex-grow: 1;
   overflow: auto;
+  min-height: 200px;
 `;
 
 export { CountryListItemMeta };

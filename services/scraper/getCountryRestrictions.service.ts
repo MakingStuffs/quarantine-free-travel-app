@@ -23,20 +23,23 @@ const getCountryRestrictions = async (
     const currentMentions: RestrictionMention[] = await (async (): Promise<
       RestrictionMention[]
     > => {
-      // Remove script element so we dont also match the schema JSON
-      document
-        .querySelectorAll('script[type="application/ld+json"]')
-        .forEach((elem) => {
-          elem.remove();
-        });
-      // Get the correct json
-      const domText = document.body.textContent?.replace(/\n/g, "");
+      // Get the main content element
+      const mainElement = document.querySelector("main");
+      if (!mainElement || !mainElement.textContent) return [];
       // There is no body so just exit as we cant do anything
-      if (!!!domText) return [];
       // Get our condition objects
-      const quarantine = getRestrictionObject(domText, "QUARANTINE");
-      const isolation = getRestrictionObject(domText, "ISOLATION");
-      const closedBorders = getRestrictionObject(domText, "CLOSED_BORDER");
+      const quarantine = getRestrictionObject(
+        mainElement?.textContent,
+        "QUARANTINE"
+      );
+      const isolation = getRestrictionObject(
+        mainElement?.textContent,
+        "ISOLATION"
+      );
+      const closedBorders = getRestrictionObject(
+        mainElement?.textContent,
+        "CLOSED_BORDER"
+      );
 
       return getMentions([quarantine, isolation, closedBorders]);
     })();

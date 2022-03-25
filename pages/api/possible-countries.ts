@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { CountryInterface, RestrictionMention } from "types";
 import Cors from "cors";
 import { runMiddleware } from "utils";
-import { getAllRecords } from "services";
+import { getAllRecords } from "services/db";
 
 // Init our cors middleware
 const cors = Cors({
@@ -11,6 +11,7 @@ const cors = Cors({
 });
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log(getAllRecords);
   try {
     // Run our middleware
     await runMiddleware(req, res, cors);
