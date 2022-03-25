@@ -6,7 +6,6 @@ import { constants } from "config";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { API_SECRET } = constants;
   const ACTION_KEY = req?.headers?.authorization?.split(" ")[1];
-  console.log(ACTION_KEY);
   if (API_SECRET === ACTION_KEY) {
     try {
       const updatedList = await getUpdatedList();
