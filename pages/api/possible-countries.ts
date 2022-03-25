@@ -11,7 +11,6 @@ const cors = Cors({
 });
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(getAllRecords);
   try {
     // Run our middleware
     await runMiddleware(req, res, cors);
