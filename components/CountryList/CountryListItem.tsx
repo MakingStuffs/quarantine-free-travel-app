@@ -60,20 +60,12 @@ margin: 0.5rem;
     font-weight: 700;
     text-transform: capitalize;
     font-size: 1.5rem;
-    position: relative;
     display: inline-block;
-
-    &::after {
-      position: absolute;
-      top: calc(100% + 0.35rem);
-      height: 3px;
-      background-color: ${hasConditions ? "var(--warning)" : "var(--primary)"};
-      width: calc(100% + 5px);
-      content: "";
-      left: 50%;
-      border-radius: 5px;
-      transform: translateX(-50%);
-    }
+    padding-bottom: 2px;
+    text-underline-offset: 4px;
+    text-decoration: underline 3px ${
+      hasConditions ? "var(--warning)" : "var(--primary)"
+    };
   }
 
   > span {
