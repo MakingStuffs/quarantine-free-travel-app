@@ -1,7 +1,10 @@
 import { constants } from "config";
 import { connectToMongo } from "lib";
+import { PartialCountryInterface } from "types";
 
-const getAllCombinedPageRecords = async () => {
+const getAllCombinedPageRecords = async (): Promise<
+  PartialCountryInterface[]
+> => {
   try {
     const { db } = await connectToMongo();
     const collection = db.collection(constants.MONGO_COLLECTION as string);
@@ -17,9 +20,10 @@ const getAllCombinedPageRecords = async () => {
         }
       )
       .toArray();
-    return records;
+    return records as unknown as PartialCountryInterface[];
   } catch (e) {
     console.warn(e);
+    return [];
   }
 };
 
