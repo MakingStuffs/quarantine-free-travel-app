@@ -9,7 +9,7 @@ const getAllRecords = async (): Promise<CountryInterface[]> => {
     const collection: Collection<CountryInterface> = db.collection(
       constants.MONGO_COLLECTION as string
     );
-    const records = await collection.find().toArray();
+    const records: CountryInterface[] = await collection.find().toArray();
     return records;
   } catch (e) {
     console.warn(e);
