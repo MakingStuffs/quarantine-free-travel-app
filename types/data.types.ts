@@ -22,7 +22,6 @@ export interface PartialCountryInterface {
 
 export interface CountryInterface extends PartialCountryInterface {
   _id?: ObjectId | undefined;
-  name: string;
   restrictionData?: {
     mentions: RestrictionMention[];
   };
