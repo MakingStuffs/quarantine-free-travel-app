@@ -26,6 +26,7 @@ const updateCountryRecord = async (
         },
         { returnDocument: "after", upsert: true }
       );
+
     return record as unknown as CountryInterface;
   } catch (e) {
     console.warn(e);
