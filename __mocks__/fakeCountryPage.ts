@@ -1095,26 +1095,32 @@ const FAKE_COUNTRY_PAGES = [
       countryPage:
         "https://www.gov.uk/foreign-travel-advice/antigua-and-barbuda",
     },
+    updated: 123123123,
   },
   {
     name: "argentina",
     urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/argentina" },
+    updated: 123123123,
   },
   {
     name: "australia",
     urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/australia" },
+    updated: 123123123,
   },
   {
     name: "austria",
     urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/austria" },
+    updated: 123123123,
   },
   {
     name: "bahrain",
     urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/bahrain" },
+    updated: 123123123,
   },
   {
     name: "belize",
     urls: { countryPage: "https://www.gov.uk/foreign-travel-advice/belize" },
+    updated: 123123123,
   },
   {
     name: "bonaire-st-eustatius-saba",
@@ -1122,6 +1128,7 @@ const FAKE_COUNTRY_PAGES = [
       countryPage:
         "https://www.gov.uk/foreign-travel-advice/bonaire-st-eustatius-saba",
     },
+    updated: 123123123,
   },
   {
     name: "british-indian-ocean-territory",
@@ -1129,6 +1136,7 @@ const FAKE_COUNTRY_PAGES = [
       countryPage:
         "https://www.gov.uk/foreign-travel-advice/british-indian-ocean-territory",
     },
+    updated: 123123123,
   },
 ];
 
