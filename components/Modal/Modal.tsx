@@ -6,14 +6,14 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   openCallback?: () => void;
   closeCallback?: () => void;
   genericCallback?: () => void;
-  openButtonId: string;
+  buttonAttributes?: HTMLAttributes<HTMLButtonElement>;
 }
 
 const Modal: React.FC<ModalProps> = ({
   openCallback,
   closeCallback,
   genericCallback,
-  openButtonId,
+  buttonAttributes,
   openLabel,
   children,
   ...rest
@@ -23,6 +23,7 @@ const Modal: React.FC<ModalProps> = ({
   const toggleModal: React.MouseEventHandler<HTMLSpanElement> = (
     e: React.MouseEvent<HTMLSpanElement>
   ) => {
+    if (e.currentTarget.getAttribute("aria-disabled") === "true") return;
     if (isOpen) {
       setIsOpen(false);
       if (!!openCallback) openCallback();
@@ -44,7 +45,12 @@ const Modal: React.FC<ModalProps> = ({
           <StyledModalContent>{children}</StyledModalContent>
         </StyledModalBody>
       </StyledModal>
-      <StyledButton id={openButtonId} onClick={toggleModal}>
+      <StyledButton
+        role="button"
+        onClick={toggleModal}
+        aria-disabled={isOpen}
+        {...buttonAttributes}
+      >
         {openLabel ? openLabel : "Open Modal"}
       </StyledButton>
     </>
